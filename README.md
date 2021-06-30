@@ -54,7 +54,7 @@ Repeat the above for each set of primers within your fastq files.
    + You will need to create a `samples.txt` file for **each** primer set, examples can be found in the readme section. For ease of creation, I recommend using MS Excel to create a template with all your samples across all primers, and then convert to a text file.
    + Open the samples.txt file in a text editor and double check _(!!)_ that the format is **tab-delimited**, **plain text**, **Unicode UTF-8**, and **UNIX line feeds**.
 2. To run the `demultiplex_dada2.pl` script from ggloor, you will have to modify the header to include the **number of bases of your primer** (counting wobble bases only as 1 nt).
-   + Alternatively, copy and paste the following chunk of code into your unedited copy from ggloor.
+   + Alternatively, copy and paste the following chunk of code into your unedited copy from ggloor **if** you are in the Thorn Lab or are using our primers. Check the primer references below to make sure the same primers are being used.
 ```
 my @lprimerlen = (16, 22, 20, 18, 27, 23);  # length of forward primer
 my @rprimerlen = (20, 26, 21, 17, 21, 24);  # length of reverse primer
@@ -91,3 +91,6 @@ Run the script using the instructions provided in ggloor's GitHub page for each 
 
 [<sup>2</sup>](#2) ASVs are created through dada2, which are becoming increasingly popular over OTUs created by Mothur, QIIME and other demultiplexing pipelines.
 
+***
+
+## Primer references

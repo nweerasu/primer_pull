@@ -1,29 +1,38 @@
 # primer_pull.sh
-This short BASH script allows Illumina MiSeq FASTQ files to be demultiplexed by their primer pairs before sample demultiplexing. This is useful when there are duplicate barcodes across primers, which will result in multiple samples being merged when sample demultiplexing.
+This short BASH script allows Illumina MiSeq FASTQ files to be demultiplexed by their primer pairs before sample demultiplexing. This is useful when there are duplicate barcodes across primers, which will result in multiple samples being merged when sample demultiplexing _if_ the primers aren't separated first.
 
 ## Requirements
 If you are on a Windows machine, you must be running a Linux virtual machine either with WSL2, or as a Virtual Disk/Emulator.
 I recommend using [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10) if you are on Windows 10.
 
-If you are already on Linux or MacOS, no further action is required.
+If you are already on Linux or MacOS, no further action is required, however _I have not tested this code on a Mac_.
 
-Unzip the BaseSpace files and place the forward and reverse .fastq files into your working directory. This can be done using commandline `gunzip` (WSL2, MacOS, Linux) or via gui (Windows Explorer) using [7zip](https://www.7-zip.org/) (Windows).
+### Downloading the files from BaseSpace
+To download the necessary files, first, log in to your [BaseSpace account](https://basespace.illumina.com), then follow along with the screenshots below:
 
-Place the `primer_pull.sh` script into your working directory.
+1. Click the _Paper icon_ > _Download_ > _Run_.
+<img src="https://github.com/nweerasu/primer_pull/blob/main/downloadFASTQ/base1.PNG" width=50% height=50%>
+2. Install the Downloader > Download as a FASTQ file.
+<img src="https://github.com/nweerasu/primer_pull/blob/main/downloadFASTQ/base2.PNG" width=50% height=50%>
 
-## The code
+***
+
+## Modifying the code
 There are 3 required options to run this code:
 
-- -h     show the help message
 - -f     forward original fastq **(required)**
 - -r     reverse original fastq **(required)**
 - -p     forward primer sequence [ITS2; LSUA; LSUBG, rbcLa, psbA3] **(required)**
+- -h     show the help message
 
 Each primer sequence is defined within the script, if you need to modfy the script to add in your specific **forward** primer sequence, please do so at lines 54 - 79 under a new primer heading[<sup>1</sup>](#1). Any [wobble bases](https://www.bioinformatics.org/sms/iupac.html) must be defined and enclosed within square brackets [ ].
 
 ## To run the script
-1. Set executable permissions for the script in Terminal using `chmod u+x ./primer_pull.sh`. This will allow your program to run.
-2. Run the script using `./primer_pull.sh -f <forward reads.fastq> -r <reverse_reads.fastq> -p <primer name>`
+1. Unzip the BaseSpace files and place the forward and reverse .fastq files into your working directory. This can be done using commandline `gunzip` (WSL2, MacOS, Linux) or via gui (Windows Explorer) using [7zip](https://www.7-zip.org/) (Windows).
+2. Download and place the `primer_pull.sh` script into your working directory.
+3. Open a Terminal window and navigate to your working directory using commands such as `cd`, `ls`.
+4. Set executable permissions for the script in Terminal using `chmod u+x ./primer_pull.sh`. This will allow your program to run.
+5. Run the script using `./primer_pull.sh -f <forward reads.fastq> -r <reverse_reads.fastq> -p <primer name>`
 
 ## Output files
 The output files will be created in order:
@@ -36,6 +45,8 @@ A console output will provide a sanity-check, to make sure the number of reads i
 A final elapsed time output will be provided.
 
 Repeat the above for each set of primers within your fastq files.
+
+***
 
 ## Next steps
 ### Demultiplexing samples
@@ -76,7 +87,7 @@ Run the script using the instructions provided in ggloor's GitHub page for each 
 
 ***
 
-[<sup>1</sup>](#1) It is recommended to download a reliable text editor for your platform: : [notepad++](https://notepad-plus-plus.org/) for Windows; [Sublime Text](https://www.sublimetext.com/) for Mac or Linux.
+[<sup>1</sup>](#1) It is recommended to download a reliable text editor for your platform: [notepad++](https://notepad-plus-plus.org/) for Windows; [Sublime Text](https://www.sublimetext.com/) for Mac or Linux.
 
 [<sup>2</sup>](#2) ASVs are created through dada2, which are becoming increasingly popular over OTUs created by Mothur, QIIME and other demultiplexing pipelines.
 

@@ -92,5 +92,33 @@ Run the script using the instructions provided in ggloor's GitHub page for each 
 [<sup>2</sup>](#2) ASVs are created through dada2, which are becoming increasingly popular over OTUs created by Mothur, QIIME and other demultiplexing pipelines.
 
 ***
+# Appendix
 
-## Primer references
+## Primers
+
+**AMFV4 (AMV4.5N-F/AMDG-R)**: rRNA 18S V4; Fungi; Glomeromycota (Sato _et al._, 2005)
+
+**ITS2 (5.8S_Fun [F]/ITS4_Fun [R])**: rRNA ITS-2; Fungi (Taylor _et al._, 2016)
+
+**LSUA (28S200A-F/28S476A-R)**: rRNA 28S D1-D2 region; Fungi; Ascomycota (Asemaninejad _et al._, 2016)
+
+**LSUBG (28S200-F/28S481-R)**: rRNA 28S D1-D2 region; Fungi; non-Ascomycota (Asemaninejad _et al._, 2016)
+
+**ProkV4 (U518F/806R)**: rRNA 18S V4 region; Bacteria/Archaea (Caporaso _et al_. 2011)
+
+**rbcLa (rbcLa-F/rbcLa-R)**: ribulose-1,5-bisphosphate 156 carboxylase/oxygenase; Viridiplantae (Kress _et al._, 2009)
+
+**psbA3 (psbA3-F/trnH-R)**: trnH-psbA spacer; Viridiplantae (Kress _et al._, 2009)
+
+
+## References
+
+Asemaninejad, Asma, Nimalka Weerasuriya, Gregory B. Gloor, Zoë Lindo, and Greg Thorn. 2016. “New Primers for Discovering Fungal Diversity Using Nuclear Large Ribosomal DNA.” PLoS ONE 11 (7) [doi:10.1371/journal.pone.0159043](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0159043).
+
+Caporaso, J Gregory, et al. 2011. “Global Patterns of 16S RRNA Diversity at a Depth of Millions of Sequences per Sample.” Proceedings of the National Academy of Sciences 108 (Supplement 1): 4516–4522. [doi:10.1073/pnas.1000080107](https://doi.org/10.1073/pnas.1000080107).
+
+Kress, W.J., et al. 2009. “Plant DNA Barcodes and a Community Phylogeny of a Tropical Forest Dynamics Plot in Panama.” Proceedings of the National Academy of Sciences USA 106 (44): 18621–18626 [doi:10.1073/pnas.0909820106](https://doi.org/10.1073/pnas.0909820106).
+
+Taylor, D Lee, et al. 2016. “Accurate Estimation of Fungal Diversity and Abundance through Improved Lineage-Specific Primers Optimized for Illumina Amplicon Sequencing.” Applied and Environmental Microbiology 82 (24): 7217–7226 [doi.org/10.1128/AEM.02576-16](https://doi.org/10.1128/AEM.02576-16).
+
+Sato, Kouichi, Yoshihisa Suyama, Masanori Saito, and Kazuo Sugawara. 2005. “A New Primer for Discrimination of Arbuscular Mycorrhizal Fungi with Polymerase Chain Reaction-Denature Gradient Gel Electrophoresis.” Grassland Science 51 (2): 179–181. [doi:10.1111/j.1744-697X.2005.00023.x](https://doi.org/10.1111/j.1744-697X.2005.00023.x)

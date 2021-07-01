@@ -28,9 +28,9 @@ while getopts “hcf:r:p:m:v” OPTION; do
              usage
              exit 1
              ;;
-		 c) 
-			CLEAN=$OPTARG
-			 ;;	
+	 c) 
+	     CLEAN=$OPTARG
+	     ;;	
          f)
              FFILE=$OPTARG
              ;;
@@ -39,7 +39,7 @@ while getopts “hcf:r:p:m:v” OPTION; do
              ;;
          p)
              PRI=$OPTARG
-			 ;;
+	     ;;
          ?)
              usage
              exit
@@ -71,6 +71,14 @@ case $PRI in # define the
 	psbA3)
 		LP="GTTATGCATGAACGTAATGCTC"
 		echo "Primer is psbA3/trnH: "$LP
+	;;
+	ProkV4)
+		LP="CCAGC[AC]GCCGCGGTAA"
+		echo "Primer is ProkV4: "$LP
+	;;
+	AMFV4)
+		LP="AAC[GT]GCGAGTGAAGC[AG]G[CT]A"
+		echo "Primer is AMFV4: "$LP
 	;;
 	*)
 	echo Primer not defined, try again

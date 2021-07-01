@@ -11,7 +11,7 @@ OPTIONS:
    -c 	   clean; wipe intermediate files and re-run; to be implemented later
    -f      forward original fastq
    -r      reverse original fastq
-   -p      forward primer sequence [ITS2; LSUA; LSUBG, rbcLa, psbA3]
+   -p      forward primer sequence [ITS2; LSUA; LSUBG, rbcLa, psbA3, ProkV4, AMFV4]
 EOF
 }
 

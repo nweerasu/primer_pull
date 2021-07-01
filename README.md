@@ -25,7 +25,7 @@ There are 3 required options to run this code:
 - -p     forward primer sequence [ITS2; LSUA; LSUBG, rbcLa, psbA3] **(required)**
 - -h     show the help message
 
-Each primer sequence is defined within the script, if you need to modfy the script to add in your specific **forward** primer sequence, please do so at lines 54 - 79 under a new primer heading[<sup>1</sup>](#1). Any [wobble bases](https://www.bioinformatics.org/sms/iupac.html) must be defined and enclosed within square brackets [ ].
+Each primer sequence is defined within the script, if you need to modfy the script to add in your specific **forward** primer sequence, please do so at the primer definition section ~line 54, under a new primer heading[<sup>1</sup>](#1). Any [wobble bases](https://www.bioinformatics.org/sms/iupac.html) must be defined and enclosed within square brackets [ ].
 
 ## To run the script
 1. Unzip the BaseSpace files and place the forward and reverse .fastq files into your working directory. This can be done using commandline `gunzip` (WSL2, MacOS, Linux) or via gui (Windows Explorer) using [7zip](https://www.7-zip.org/) (Windows).
@@ -37,7 +37,7 @@ Each primer sequence is defined within the script, if you need to modfy the scri
 ## Output files
 The output files will be created in order:
 1. `<primer>_R1.fastq` - this will be your forward reads with the specified primer **(keep)**
-2. `<primer>_samples.txt` - this will contain the unique samples ID that will be used to search your reverse fastq file (can be discarded)
+2. `<primer>_samples.txt` - this will contain the unique sequence ID that will be used to search your reverse fastq file (can be discarded)
 3. `<primer>_R2.fastq` - this will be your reverse reads with the specified primer **(keep)**
 
 A console output will provide a sanity-check, to make sure the number of reads in each file matches. The difference should be 0. 
@@ -66,24 +66,27 @@ if ( defined $ARGV[3]){  # list of all possible primers
 	$primer = 1 if $ARGV[3] eq "ITS2";
 	$primer = 2 if $ARGV[3] eq "LSUBG";
 	$primer = 4 if $ARGV[3] eq "rbcLa";
-	$primer = 5 if $ARGV[3] eq "psbA3";`
+	$primer = 5 if $ARGV[3] eq "psbA3";
+	$primer = 6 if $ARGV[3] eq "AMFV4";
 ```
 
    + Additionally, you'll have to specify your barcode length just below the primer definition section by editing:
 ```
 my %samples;
-my $bclen = 12; #Golay are 12-mers
-$bclen = 8 if $ARGV[3] eq "MCHII_SOSP";
-$bclen = 8 if $ARGV[3] eq "SOSP";
-$bclen = 8 if $ARGV[3] eq "<your_primers_here"; # copy and edit the above lines for each primer
+my $bclen = 12; # Change this to the length of your barcodes (ALL barcodes must be this length)
 ```
+If you have different barcode lengths for different primers, you will have to modify the lines below this section. e.g.
+```
+$bclen = 8 if $ARGV[3] eq "MCHII_SOSP"; # check that the primer names match, capitalizations included
+$bclen = 8 if $ARGV[3] eq "SOSP";
+```
+
 Run the script using the instructions provided in ggloor's GitHub page for each primer. 
 
 ### Bioinformatic analysis
-4. After demultiplexing within samples, you are free to filter, overlap, chimera-check, and classify your sequences[<sup>2</sup>](#2).
-   + Options include the [dada2 tutorial](https://benjjneb.github.io/dada2/tutorial.html). Read and follow along with a smaller subset to make sure you fully understand the process before attempting the Big Data tutorial.
-   + Or the [dada2 Big Data](https://benjjneb.github.io/dada2/bigdata.html) if you have a lot of samples per primer.
-
+4. After demultiplexing within samples, you are free to filter, overlap, chimera-check, and classify your sequences[<sup>2</sup>](#2). Options include:
+	+ the [dada2 tutorial](https://benjjneb.github.io/dada2/tutorial.html). Read and follow along with a smaller subset to make sure you fully understand the process before attempting the Big Data tutorial.
+	+ the [dada2 Big Data tutorial](https://benjjneb.github.io/dada2/bigdata.html) if you have a lot of samples per primer, and if you find your R program crashing due to insufficient computer RAM or processing power. _Note:_ this will likely happen if you are on a personal computer.
 
 ***
 
@@ -104,7 +107,7 @@ Run the script using the instructions provided in ggloor's GitHub page for each 
 
 **LSUBG (28S200-F/28S481-R)**: rRNA 28S D1-D2 region; Fungi; non-Ascomycota (Asemaninejad _et al._, 2016)
 
-**ProkV4 (U518F/806R)**: rRNA 18S V4 region; Bacteria/Archaea (Caporaso _et al_. 2011)
+**ProkV4 (U518F/806R)**: rRNA 18S V4 region; Bacteria/Archaea (Caporaso _et al._, 2011)
 
 **rbcLa (rbcLa-F/rbcLa-R)**: ribulose-1,5-bisphosphate 156 carboxylase/oxygenase; Viridiplantae (Kress _et al._, 2009)
 
@@ -113,7 +116,7 @@ Run the script using the instructions provided in ggloor's GitHub page for each 
 
 ## References
 
-Asemaninejad, Asma, Nimalka Weerasuriya, Gregory B. Gloor, Zoë Lindo, and Greg Thorn. 2016. “New Primers for Discovering Fungal Diversity Using Nuclear Large Ribosomal DNA.” PLoS ONE 11 (7) [doi:10.1371/journal.pone.0159043](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0159043).
+Asemaninejad, Asma, et al. 2016. “New Primers for Discovering Fungal Diversity Using Nuclear Large Ribosomal DNA.” PLoS ONE 11 (7) [doi:10.1371/journal.pone.0159043](https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0159043).
 
 Caporaso, J Gregory, et al. 2011. “Global Patterns of 16S RRNA Diversity at a Depth of Millions of Sequences per Sample.” Proceedings of the National Academy of Sciences 108 (Supplement 1): 4516–4522. [doi:10.1073/pnas.1000080107](https://doi.org/10.1073/pnas.1000080107).
 
@@ -121,4 +124,4 @@ Kress, W.J., et al. 2009. “Plant DNA Barcodes and a Community Phylogeny of a T
 
 Taylor, D Lee, et al. 2016. “Accurate Estimation of Fungal Diversity and Abundance through Improved Lineage-Specific Primers Optimized for Illumina Amplicon Sequencing.” Applied and Environmental Microbiology 82 (24): 7217–7226 [doi.org/10.1128/AEM.02576-16](https://doi.org/10.1128/AEM.02576-16).
 
-Sato, Kouichi, Yoshihisa Suyama, Masanori Saito, and Kazuo Sugawara. 2005. “A New Primer for Discrimination of Arbuscular Mycorrhizal Fungi with Polymerase Chain Reaction-Denature Gradient Gel Electrophoresis.” Grassland Science 51 (2): 179–181. [doi:10.1111/j.1744-697X.2005.00023.x](https://doi.org/10.1111/j.1744-697X.2005.00023.x)
+Sato, Kouichi, et al. 2005. “A New Primer for Discrimination of Arbuscular Mycorrhizal Fungi with Polymerase Chain Reaction-Denature Gradient Gel Electrophoresis.” Grassland Science 51 (2): 179–181. [doi:10.1111/j.1744-697X.2005.00023.x](https://doi.org/10.1111/j.1744-697X.2005.00023.x)

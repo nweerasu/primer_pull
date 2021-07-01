@@ -14,18 +14,20 @@ use strict;
 # 2 reverse fastq
 # 3 primer names, one of V4EMB, V6, etc
 
-my @lprimerlen = (16, 22, 20, 18, 27, 23);
-my @rprimerlen = (20, 26, 21, 17, 21, 24);
+my @lprimerlen = (16, 22, 20, 18, 27, 23, 19);
+my @rprimerlen = (20, 26, 21, 17, 21, 24, 22);
 
 my  $primer = 1;
 if ( defined $ARGV[3]){
-	$primer = 0 if $ARGV[3] eq "PROKV4";
+	$primer = 0 if $ARGV[3] eq "ProkV4";
 	$primer = 2 if $ARGV[3] eq "LSUA";
 	$primer = 1 if $ARGV[3] eq "ITS2";
 	$primer = 2 if $ARGV[3] eq "LSUBG";
 	$primer = 4 if $ARGV[3] eq "rbcLa";
 	$primer = 5 if $ARGV[3] eq "psbA3";
+	$primer = 6 if $ARGV[3] eq "AMFV4";
 }
+
 my %samples;
 my $bclen = 8;
 

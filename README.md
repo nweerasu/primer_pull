@@ -91,8 +91,6 @@ Run the script using the instructions provided in ggloor's GitHub page for each 
 	+ the [dada2 tutorial](https://benjjneb.github.io/dada2/tutorial.html). Read and follow along with a smaller subset to make sure you fully understand the process before attempting the Big Data tutorial.
 	+ the [dada2 Big Data tutorial](https://benjjneb.github.io/dada2/bigdata.html) if you have a lot of samples per primer, and if you find your R program crashing due to insufficient computer RAM or processing power. _Note:_ this will likely happen if you are on a personal computer.
 
-***
-
 ### Publication Requirements
 To successfully publish your data in a manuscript you will have to upload and accession your demultiplexed FASTQ sequence files to an online repository. The easiest option is using the [European Nucleotide Archive](https://www.ebi.ac.uk/ena/browser/home). The files that will be required for upload will be the **zipped, demultiplexed** sample files in the `demultiplex_$group` folder, with the `$group` names matching those in your samples.txt files.
 

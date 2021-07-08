@@ -51,7 +51,7 @@ Repeat the above for each set of primers within your fastq files.
 ## Next steps
 ### Demultiplexing samples
 1. After each of your primers have been demultiplexed, proceed with the `demultiplex_dada2.pl` from [Dr. Greg Gloor's GitHub repository](https://github.com/ggloor/miseq_bin).
-   + You will need to create a `samples.txt` file for **each** primer set, examples can be found in the readme section. For ease of creation, I recommend using MS Excel to create a template with all your samples across all primers, and then convert to a text file.
+   + You will need to create a `samples.txt` file for **each** primer set, examples can be found in the readme section. For ease of creation, I recommend using MS Excel to create a template with all your samples across all primers, and then convert to a text file. Again, **you need a separate samples_xx.txt file for each primer set**
    + Open the samples.txt file in a text editor and double check _(!!)_ that the format is **tab-delimited**, **plain text**, **Unicode UTF-8**, and **UNIX line feeds**.
 2. To run the `demultiplex_dada2.pl` script from ggloor, you will have to:
    + Modify the shebang line **(if you are in Windows)** to: `#!/usr/bin/perl -w`; otherwise for Unix machines, leave the shebang as: `#!/usr/bin/env perl -w`

@@ -1,4 +1,4 @@
-# primer_pull.sh
+# primer_pull.sh for Demultiplexing Primers in a MiSeq Run
 This short BASH script allows Illumina MiSeq FASTQ files to be demultiplexed by their primer pairs before sample demultiplexing. This is useful when there are duplicate barcodes across primers, which will result in multiple samples being merged when sample demultiplexing _if_ the primers aren't separated first.
 
 ## Requirements
@@ -93,6 +93,12 @@ Run the script using the instructions provided in ggloor's GitHub page for each 
 
 ***
 
+## Publication Requirements
+To successfully publish your data in a manuscript you will have to upload and accession your demultiplexed FASTQ sequence files to an online repository. The easiest option is using the [European Nucleotide Archive](https://www.ebi.ac.uk/ena/browser/home). The files that will be required for upload will be the **zipped, demultiplexe** sample files in the `demultiplex_$group` folder, with the `$group` names as your different primers, and your samples.txt files.
+
+Additionally, you will have to provide information on the parameters used for filtering, merging, chimera-checking, taxonomy assignment, etc. from within dada2. Save your .R scripts for this purpose.
+
+***
 [<sup>1</sup>](#1) It is recommended to download a reliable text editor for your platform: [notepad++](https://notepad-plus-plus.org/) for Windows; [Sublime Text](https://www.sublimetext.com/) for Mac or Linux.
 
 [<sup>2</sup>](#2) ASVs are created through dada2, which are becoming increasingly popular over OTUs created by Mothur, QIIME and other demultiplexing pipelines.
@@ -128,3 +134,8 @@ Kress, W.J., et al. 2009. “Plant DNA Barcodes and a Community Phylogeny of a T
 Taylor, D Lee, et al. 2016. “Accurate Estimation of Fungal Diversity and Abundance through Improved Lineage-Specific Primers Optimized for Illumina Amplicon Sequencing.” Applied and Environmental Microbiology 82 (24): 7217–7226 [doi.org/10.1128/AEM.02576-16](https://doi.org/10.1128/AEM.02576-16).
 
 Sato, Kouichi, et al. 2005. “A New Primer for Discrimination of Arbuscular Mycorrhizal Fungi with Polymerase Chain Reaction-Denature Gradient Gel Electrophoresis.” Grassland Science 51 (2): 179–181. [doi:10.1111/j.1744-697X.2005.00023.x](https://doi.org/10.1111/j.1744-697X.2005.00023.x)
+
+***
+
+For citing this script, please use something similar to:
+Weerasuriya, Nimalka M. 2021. primer_pull.sh for Demultiplexing Primers in a MiSEQ Run. GitHub repository, https://github.com/nweerasu/primer_pull

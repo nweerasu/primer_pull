@@ -55,7 +55,7 @@ Repeat the above for each set of primers within your fastq files.
    + Open the samples.txt file in a text editor and double check _(!!)_ that the format is **tab-delimited**, **plain text**, **Unicode UTF-8**, and **UNIX line feeds**.
 2. To run the `demultiplex_dada2.pl` script from ggloor, you will have to:
    + Modify the shebang line **(if you are in Windows)** to: `#!/usr/bin/perl -w`; otherwise for Unix machines, leave the shebang as: `#!/usr/bin/env perl -w`
-   + Modify the primer variables to include the **number of bases of your primer** (counting wobble bases only as 1 nt).
+   + Modify the primer variables to include the **length of your primer** (counting wobble bases only as 1 nt). These lines start with `my @lprimerlen` and `my @rprimerlen`.
    + Specify your barcode length just below the primer definition section to the length of most of your barcodes (8). Individual primers with different barcode lengths can be specified as ggloor has done in their original script, e.g.
 ```
 $bclen = 8 if $ARGV[3] eq "MCHII_SOSP"; # check that the primer names match, capitalizations included
@@ -64,24 +64,24 @@ $bclen = 8 if $ARGV[3] eq "SOSP";
    + Alternatively, copy and paste the following chunk of code into your unedited copy from ggloor **if** you are in the Thorn Lab or are using our primers. Check the primer references below to make sure the same primers are being used.
 
 ```
-#!/usr/bin/perl -w
+#!/usr/bin/perl -w 	# Windows shebang
 use strict; 
 
-my @lprimerlen = (16, 22, 20, 18, 27, 23);  # length of forward primer
-my @rprimerlen = (20, 26, 21, 17, 21, 24);  # length of reverse primer
+my @lprimerlen = (16, 22, 20, 18, 27, 23, 19);	# legnth of forward primer
+my @rprimerlen = (20, 26, 21, 17, 21, 24, 22);	# length of reverse primer
 
 my  $primer = 1;
 if ( defined $ARGV[3]){  # list of all possible primers
-	$primer = 0 if $ARGV[3] eq "PROKV4";
-	$primer = 2 if $ARGV[3] eq "LSUA";
-	$primer = 1 if $ARGV[3] eq "ITS2";
-	$primer = 2 if $ARGV[3] eq "LSUBG";
-	$primer = 4 if $ARGV[3] eq "rbcLa";
-	$primer = 5 if $ARGV[3] eq "psbA3";
-	$primer = 6 if $ARGV[3] eq "AMFV4";
+	$primer = 0 if $ARGV[3] eq "PROKV4"; 	# fwd: 16 nt, rev: 20 nt
+	$primer = 2 if $ARGV[3] eq "LSUA";	# fwd: 20, rev: 21
+	$primer = 1 if $ARGV[3] eq "ITS2";	# fwd: 22, rev: 26
+	$primer = 2 if $ARGV[3] eq "LSUBG";	# fwd: 20, red: 21
+	$primer = 4 if $ARGV[3] eq "rbcLa";	# fed: 27, rev: 21
+	$primer = 5 if $ARGV[3] eq "psbA3";	# fwd: 23, rev: 24
+	$primer = 6 if $ARGV[3] eq "AMFV4";	# fwd: 19, rev: 22
 
 my %samples;
-my $bclen = 8; # Change this to the length of your barcodes (ALL barcodes must be this length)
+my $bclen = 8; 		# Change this to the length of your barcodes (ALL barcodes must be this length, unless specified below)
 ```
 
 Run the script using the instructions provided in ggloor's GitHub page for each primer. 

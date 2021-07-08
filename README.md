@@ -51,12 +51,12 @@ Repeat the above for each set of primers within your fastq files.
 ## Next steps
 ### Demultiplexing samples
 1. After each of your primers have been demultiplexed, proceed with the `demultiplex_dada2.pl` from [Dr. Greg Gloor's GitHub repository](https://github.com/ggloor/miseq_bin).
-   + You will need to create a `samples.txt` file for **each** primer set, examples can be found in the readme section. For ease of creation, I recommend using MS Excel to create a template with all your samples across all primers, and then convert to a text file. Again, **you need a separate samples_xx.txt file for each primer set**
+   + You will need to create a `samples.txt` file for **each** primer set, examples can be found in the readme section. For ease of creation, I recommend using MS Excel to create a template with all your samples across all primers, and then convert to a text file. Again, **you need a separate samples_xx.txt file for each primer set**.
    + Open the samples.txt file in a text editor and double check _(!!)_ that the format is **tab-delimited**, **plain text**, **Unicode UTF-8**, and **UNIX line feeds**.
 2. To run the `demultiplex_dada2.pl` script from ggloor, you will have to:
    + Modify the shebang line **(if you are in Windows)** to: `#!/usr/bin/perl -w`; otherwise for Unix machines, leave the shebang as: `#!/usr/bin/env perl -w`
    + Modify the primer variables to include the **length of your primer** (counting wobble bases only as 1 nt). These lines start with `my @lprimerlen` and `my @rprimerlen`.
-   + Specify your barcode length just below the primer definition section to the length of most of your barcodes (8). Individual primers with different barcode lengths can be specified as ggloor has done in their original script, e.g.
+   + Specify your barcode length just below the primer definition section to the length of most of your barcodes (8). Individual primers with different barcode lengths can be specified as ggloor has done in their original script, e.g.:
 ```
 $bclen = 8 if $ARGV[3] eq "MCHII_SOSP"; # check that the primer names match, capitalizations included
 $bclen = 8 if $ARGV[3] eq "SOSP";
@@ -67,7 +67,7 @@ $bclen = 8 if $ARGV[3] eq "SOSP";
 #!/usr/bin/perl -w 	# Windows shebang
 use strict; 
 
-my @lprimerlen = (16, 22, 20, 18, 27, 23, 19);	# legnth of forward primer
+my @lprimerlen = (16, 22, 20, 18, 27, 23, 19);	# length of forward primer
 my @rprimerlen = (20, 26, 21, 17, 21, 24, 22);	# length of reverse primer
 
 my  $primer = 1;

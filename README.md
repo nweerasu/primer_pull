@@ -136,4 +136,5 @@ Sato, Kouichi, et al. 2005. “A New Primer for Discrimination of Arbuscular Myc
 ***
 
 For citing this script, please use something similar to:
+
 Weerasuriya, Nimalka M. 2021. primer_pull.sh for Demultiplexing Primers in a MiSEQ Run. GitHub repository, https://github.com/nweerasu/primer_pull

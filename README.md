@@ -93,7 +93,7 @@ Run the script using the instructions provided in ggloor's GitHub page for each 
 
 ***
 
-## Publication Requirements
+### Publication Requirements
 To successfully publish your data in a manuscript you will have to upload and accession your demultiplexed FASTQ sequence files to an online repository. The easiest option is using the [European Nucleotide Archive](https://www.ebi.ac.uk/ena/browser/home). The files that will be required for upload will be the **zipped, demultiplexe** sample files in the `demultiplex_$group` folder, with the `$group` names as your different primers, and your samples.txt files.
 
 Additionally, you will have to provide information on the parameters used for filtering, merging, chimera-checking, taxonomy assignment, etc. from within dada2. Save your .R scripts for this purpose.

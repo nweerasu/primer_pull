@@ -61,7 +61,7 @@ Repeat the above for each set of primers within your fastq files.
 $bclen = 8 if $ARGV[3] eq "MCHII_SOSP"; # check that the primer names match, capitalizations included
 $bclen = 8 if $ARGV[3] eq "SOSP";
 ```
-   + Alternatively, copy and paste the following chunk of code into your unedited copy from ggloor **if** you are in the Thorn Lab or are using our primers. Check the primer references below to make sure the same primers are being used.
+3. Alternatively, copy and paste the following chunk of code into your unedited copy from ggloor **if** you are in the Thorn Lab or are using their primers. Check the primer references below to make sure the same primers are being used.
 
 ```
 #!/usr/bin/perl -w 	# Windows shebang

@@ -61,7 +61,7 @@ Repeat the above for each set of primers within your fastq files.
 $bclen = 8 if $ARGV[3] eq "MCHII_SOSP"; # check that the primer names match, capitalizations included
 $bclen = 8 if $ARGV[3] eq "SOSP";
 ```
-3. Alternatively, copy and paste the following chunk of code into your unedited copy from ggloor **if** you are in the Thorn Lab or are using their primers. Check the primer references below to make sure the same primers are being used.
+3. Alternatively, copy and paste the following chunk of code into your unedited copy from ggloor **if** you are in the Thorn Lab or are using their primers. Check the primer list below to make sure the same primers are being used. **If not, you will have to manually add your primers in and specify the primer length, or your barcodes will not work and your final output table will be unusable**.
 
 ```
 #!/usr/bin/perl -w 	# Windows shebang
@@ -87,10 +87,11 @@ my $bclen = 8; 		# Change this to the length of your barcodes (ALL barcodes must
 Run the script using the instructions provided in ggloor's GitHub page for each primer. 
 
 ### Bioinformatic analysis
-4. After demultiplexing within samples, you are free to filter, overlap, chimera-check, and classify your sequences[<sup>2</sup>](#2). Options include:
-	+ the [dada2 tutorial](https://benjjneb.github.io/dada2/tutorial.html). Read and follow along with a smaller subset to make sure you fully understand the process before attempting the Big Data tutorial.
-	+ the [dada2 Big Data tutorial](https://benjjneb.github.io/dada2/bigdata.html) if you have a lot of samples per primer, and if you find your R program crashing due to insufficient computer RAM or processing power. _Note:_ this will likely happen if you are on a personal computer.
-
+4. After demultiplexing within samples, you are free to filter, overlap, chimera-check, and classify your sequences[<sup>2</sup>](#2). The easiest is to combine code from the following three scripts:
+	+ the [dada2 tutorial](https://benjjneb.github.io/dada2/tutorial.html). Read and follow along with a smaller subset to make sure you fully understand the process before attempting the Big Data tutorial. Useful segments of code is the Sanity Check section where you get intermediary files that show you read loss information.
+	+ the [dada2 Big Data: Paired-End tutorial](https://benjjneb.github.io/dada2/bigdata_paired.html) since it will be likely that you have many samples per primer and you find your R program crashing due to insufficient computer RAM or processing power. _Note:_ this will likely happen if you are on a personal computer. Please read through the details on the single-read version beforehand.
+	+ the [dada2 ITS tutorial](https://benjjneb.github.io/dada2/ITS_workflow.html) if any of your primers are ITS primers, please go through this and modify your script to accomodate the varying read lengths expected in ITS sequences.
+	
 ### Publication Requirements
 To successfully publish your data in a manuscript you will have to upload and accession your demultiplexed FASTQ sequence files to an online repository. The easiest option is using the [European Nucleotide Archive](https://www.ebi.ac.uk/ena/browser/home). The files that will be required for upload will be the **zipped, demultiplexed** sample files in the `demultiplex_$group` folder, with the `$group` names matching those in your samples.txt files.
 
@@ -119,6 +120,8 @@ Additionally, you will have to provide information on the parameters used for fi
 **rbcLa (rbcLa-F/rbcLa-R)**: ribulose-1,5-bisphosphate 156 carboxylase/oxygenase; Viridiplantae (Kress _et al._, 2009)
 
 **psbA3 (psbA3-F/trnH-R)**: trnH-psbA spacer; Viridiplantae (Kress _et al._, 2009)
+
+**
 
 
 ## References

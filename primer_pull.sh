@@ -18,8 +18,6 @@ EOF
 FFILE=
 RFILE=
 PRI=
-VERBOSE=
-LP=
 CLEAN=
 
 while getopts “hcf:r:p:m:v” OPTION; do
@@ -51,7 +49,7 @@ done
 echo "forward_reads=$FFILE...reverse_reads=$RFILE...primer=$PRI"
 START_TIME=$SECONDS
 
-case $PRI in # define the 
+case $PRI in # define the primers
 	LSUA)
 		LP="AAC[GT]GCGAGTGAAGC[AG]G[CT]A"
 		echo "Primer is LSUA: "$LP
@@ -85,13 +83,6 @@ case $PRI in # define the
 	exit 1
 	;;
 esac
-
-#if [ $CLEAN = true ]; then
-#	echo clean option is ON: $CLEAN
-#	else
-#	echo clean option is OFF: $CLEAN
-#fi
-#exit 1	
 	
 
 # read in original F1.fastq for fqgrep to create primer_F1.fastq

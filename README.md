@@ -3,7 +3,7 @@ This short BASH script allows Illumina MiSeq FASTQ files to be demultiplexed by 
 
 ## Requirements
 If you are on a Windows machine, you must be running a Linux virtual machine either with WSL2, or as a Virtual Disk/Emulator.
-I recommend using [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10) if you are on Windows 10.
+I recommend using [WSL2](https://docs.microsoft.com/en-us/windows/wsl/install-win10) if you are on Windows 10+.
 
 If you are already on Linux or MacOS, no further action is required, however _I have not tested this code on a Mac_.
 
